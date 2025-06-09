@@ -1,5 +1,5 @@
 import MainLayout from "@/components/MainLoyout";
-import styles from "@/styles/Home.module.css";
+import styles from "./../styles/Home.module.scss";
 import Image from "next/image";
 import qrCodeImage from "../../public/qr-code-payments.png";
 
