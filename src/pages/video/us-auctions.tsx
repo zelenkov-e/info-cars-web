@@ -4,16 +4,17 @@ import Chip from "@/components/common/Chip";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import VideoPlayer from "@/components/common/VideoPlayer";
 import Separator from "@/components/common/Separator";
+import MainLayout from "@/components/MainLoyout";
+
+const HeaderProps = {
+  title: "Проверка авто из США – Аукционы | Info4cars",
+  description: "Узнайте, как проверять историю автомобилей из США с помощью видеоинструкции.",
+  keywords: "авто из США, аукционы, Copart, IAAI, проверка VIN",
+};
 
 export default function USAuctionsPage() {
   return (
-    <>
-      <Link href="/video">
-        <Chip>
-          <MdOutlineArrowBackIosNew size={24} color="black" />
-          назад
-        </Chip>
-      </Link>
+    <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
         <div className={styles.card}>
           При покупке автомобиля из США важно проверить его историю, особенно если он был куплен на аукционе. Данные с американских аукционов, таких
@@ -23,6 +24,6 @@ export default function USAuctionsPage() {
           <VideoPlayer src="/videos/US_auction.mp4" />
         </div>
       </main>
-    </>
+    </MainLayout>
   );
 }

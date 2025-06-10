@@ -6,9 +6,16 @@ import Separator from "@/components/common/Separator";
 import Chip from "@/components/common/Chip";
 import { FaAndroid } from "react-icons/fa";
 
+const HeaderProps = {
+  title: "Поддержать Info4cars — Помогите развитию проекта",
+  description:
+    "Поддержите проект Info4cars. Ваши пожертвования помогают нам улучшать сервис, развивать функциональность и обеспечивать доступ к важной информации для всех пользователей.",
+  keywords: "пожертвование Info4cars, поддержать проект, E-POS, помощь проекту, финансирование, Info4cars донат, поддержка сайта",
+};
+
 export default function SupportUsPage() {
   return (
-    <MainLayout>
+    <MainLayout {...HeaderProps}>
       <main className={`${styles.main}`}>
         <h3>
           <b>Поддержка проекта</b>

@@ -1,19 +1,18 @@
-import Link from "next/link";
 import styles from "./../../styles/Home.module.scss";
-import Chip from "@/components/common/Chip";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import Separator from "@/components/common/Separator";
 import VideoPlayer from "@/components/common/VideoPlayer";
+import MainLayout from "@/components/MainLoyout";
+
+const HeaderProps = {
+  title: "Проверка техосмотра автомобиля | Info4cars",
+  description:
+    "Узнайте, прошёл ли ваш автомобиль технический осмотр в Республике Беларусь. Данные поступают с диагностических станций после прохождения ТО.",
+  keywords: "техосмотр, проверка ТО, автомобиль, Республика Беларусь, диагностическая станция, прохождение технического осмотра",
+};
 
 export default function TOPage() {
   return (
-    <>
-      <Link href="/video">
-        <Chip>
-          <MdOutlineArrowBackIosNew size={24} color="black" />
-          назад
-        </Chip>
-      </Link>
+    <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
         <div className={styles.card}>
           Информацию о наличии прохождении технического осмотра транспортным средством на территории Республики Беларусь. В базу заносятся все ТС,
@@ -23,6 +22,6 @@ export default function TOPage() {
           <VideoPlayer src="/videos/to.mp4" />
         </div>
       </main>
-    </>
+    </MainLayout>
   );
 }

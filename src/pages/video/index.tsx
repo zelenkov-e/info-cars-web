@@ -28,6 +28,13 @@ const PAGES = [
   },
 ];
 
+const HeaderProps = {
+  title: "Видео инструкции по использованию приложения | Info4cars",
+  description:
+    "Смотрите пошаговые видео инструкции по использованию приложения Info4cars. Узнайте, как проверять авто по VIN, техосмотру и другим параметрам.",
+  keywords: "видео инструкция, как пользоваться Info4cars, проверка авто, VIN, техосмотр, Беларусь, приложение, видео помощь",
+};
+
 export default function AboutPage() {
   const router = useRouter();
 
@@ -36,7 +43,7 @@ export default function AboutPage() {
   };
 
   return (
-    <MainLayout>
+    <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
         <h3>Видео инструкции по пользованию приложением</h3>
 

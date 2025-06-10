@@ -6,9 +6,16 @@ import Text from "@/components/common/Text";
 import Separator from "@/components/common/Separator";
 import { FaAndroid } from "react-icons/fa";
 
+const HeaderProps = {
+  title: "Политика конфиденциальности и пользовательское соглашение | Info4cars",
+  description:
+    "Ознакомьтесь с политикой конфиденциальности и пользовательским соглашением Info4cars. Мы соблюдаем Закон о защите персональных данных и обеспечиваем безопасность введённой вами информации.",
+  keywords: "политика конфиденциальности, защита данных, пользовательское соглашение, Info4cars, персональные данные, безопасность, Беларусь",
+};
+
 export default function PolicyPage() {
   return (
-    <MainLayout>
+    <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
         <h3>Политика конфиденциальности</h3>
         <div>

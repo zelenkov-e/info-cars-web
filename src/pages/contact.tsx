@@ -23,6 +23,12 @@ const InputsGroupFields: InputField[] = [
   { name: FormInputs.email, placeholder: Inputs.email },
 ];
 
+const HeaderProps = {
+  title: "Свяжитесь с нами — Поддержка пользователей Info4cars",
+  description: "Если у вас есть вопросы, предложения или нужна помощь — свяжитесь с командой Info4cars. Мы ответим в кратчайшие сроки",
+  keywords: "контакты Info4cars, поддержка, обратная связь, задать вопрос, помощь, связаться с нами, Info4cars support",
+};
+
 export default function ContactPage() {
   const router = useRouter();
   const toast = useContext(ToastContext);
@@ -92,7 +98,7 @@ export default function ContactPage() {
   };
 
   return (
-    <MainLayout>
+    <MainLayout {...HeaderProps}>
       <div className={styles.contactUs}>
         <p>У вас есть вопросы о нашем сервисе? Тогда напишите нам сообщение, и мы немедленно свяжемся с вами.</p>
       </div>
