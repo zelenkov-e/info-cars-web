@@ -2,8 +2,9 @@ import MainLayout from "@/components/MainLoyout";
 import styles from "./../styles/Home.module.scss";
 import Link from "next/link";
 import Chip from "@/components/common/Chip";
-import { MdArrowForwardIos } from "react-icons/md";
 import Text from "@/components/common/Text";
+import Separator from "@/components/common/Separator";
+import { FaAndroid } from "react-icons/fa";
 
 export default function PolicyPage() {
   return (
@@ -53,12 +54,18 @@ export default function PolicyPage() {
           </Text>
         </div>
 
-        <Link href="/contact">
-          <Chip>
-            Написать
-            <MdArrowForwardIos size={24} color="black" />
+        <Separator size="large" />
+        <div className={styles.description}>
+          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+            скачать версию для Андроид
+            <FaAndroid size={24} color="green" />
           </Chip>
-        </Link>
+
+          {/* <Chip href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
+            скачать версию для IOS
+            <FaApple size={30} color="black" />
+          </Chip> */}
+        </div>
       </main>
     </MainLayout>
   );

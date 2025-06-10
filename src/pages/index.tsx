@@ -9,7 +9,7 @@ import { IoMail } from "react-icons/io5";
 const inter = Inter({ subsets: ["latin"] });
 
 const PAGES = [
-  { title: "info", icon: <FaVideo />, path: "/info", describtion: "Видео иструкции по пользованию приложением" },
+  { title: "video", icon: <FaVideo />, path: "/video", describtion: "Видео иструкции по пользованию приложением" },
   { title: "about", icon: <FaInfoCircle />, path: "/about", describtion: "Информация о сервисе" },
   { title: "support us", icon: <FaHandsHelping />, path: "/support", describtion: "Возможность поблагодарить" },
   { title: "privacy policy", icon: <FaKey />, path: "/policy", describtion: "Конфиденциальность" },

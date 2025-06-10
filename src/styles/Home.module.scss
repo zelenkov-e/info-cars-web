@@ -27,16 +27,16 @@
 /* Hero Banner */
 .hero {
   @extend %sectionLayout;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("/main.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("/imgs/main.jpg") center/cover no-repeat;
 }
 
 .about {
   @extend %sectionLayout;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("/home-page-image.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("/imgs/home-page-image.jpg") center/cover no-repeat;
 }
 .contactUs {
   @extend %sectionLayout;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("/contact-us-image.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("/imgs/contact-us-image.jpg") center/cover no-repeat;
 }
 
 /* Cards Section */

@@ -1,7 +1,10 @@
 import MainLayout from "@/components/MainLoyout";
 import styles from "./../styles/Home.module.scss";
 import Image from "next/image";
-import qrCodeImage from "../../public/qr-code-payments.png";
+import qrCodeImage from "../../public/imgs/qr-code-payments.png";
+import Separator from "@/components/common/Separator";
+import Chip from "@/components/common/Chip";
+import { FaAndroid } from "react-icons/fa";
 
 export default function SupportUsPage() {
   return (
@@ -37,6 +40,18 @@ export default function SupportUsPage() {
         </div>
 
         <Image alt="logo" src={qrCodeImage} />
+        <Separator size="large" />
+        <div className={styles.description}>
+          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+            скачать версию для Андроид
+            <FaAndroid size={24} color="green" />
+          </Chip>
+
+          {/* <Chip href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
+            скачать версию для IOS
+            <FaApple size={30} color="black" />
+          </Chip> */}
+        </div>
       </main>
     </MainLayout>
   );

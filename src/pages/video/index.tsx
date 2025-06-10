@@ -1,0 +1,69 @@
+import Chip from "@/components/common/Chip";
+import styles from "./../../styles/Home.module.scss";
+import MainLayout from "@/components/MainLoyout";
+import { useRouter } from "next/router";
+import { RiAuctionFill } from "react-icons/ri";
+import { TbPencilSearch } from "react-icons/tb";
+import { FaAndroid, FaApple } from "react-icons/fa";
+import Separator from "@/components/common/Separator";
+import Image from "@/components/common/Image";
+import Button from "@/components/common/Button";
+
+const PAGES = [
+  {
+    title: "US Аукцион",
+    icon: <RiAuctionFill />,
+    path: "/video/us-auctions",
+    describtion: "смотреть видео",
+    imgPath: "/imgs/us-auction-image.jpg",
+    imgAlt: "изображение авто аукциона",
+  },
+  {
+    title: "прохождение ТО",
+    icon: <TbPencilSearch />,
+    path: "/video/to",
+    describtion: "смотреть видео",
+    imgPath: "/imgs/to-image.jpg",
+    imgAlt: "изображение ТО",
+  },
+];
+
+export default function AboutPage() {
+  const router = useRouter();
+
+  const handleClick = (path: string) => {
+    router.push(path);
+  };
+
+  return (
+    <MainLayout>
+      <main className={`${styles.main} `}>
+        <h3>Видео инструкции по пользованию приложением</h3>
+
+        <div className={styles.grid}>
+          {PAGES.map((page) => (
+            <div key={page.title} className={styles.card}>
+              <div className={styles.cardIcon}>{page.icon}</div>
+              <h2>{page.title}</h2>
+              <Image src={page.imgPath} alt={page.imgAlt} width={400} height={300} rounded />
+              <Separator />
+              <Button onClick={() => handleClick(page.path)}>{page.describtion}</Button>
+            </div>
+          ))}
+        </div>
+        <Separator size="large" />
+        <div className={styles.description}>
+          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+            скачать версию для Андроид
+            <FaAndroid size={24} color="green" />
+          </Chip>
+
+          {/* <Chip href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
+            скачать версию для IOS
+            <FaApple size={30} color="black" />
+          </Chip> */}
+        </div>
+      </main>
+    </MainLayout>
+  );
+}
