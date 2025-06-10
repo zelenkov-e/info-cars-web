@@ -20,7 +20,7 @@ interface MainLayoutProps {
 const defaultMeta = {
   title: "Info4cars — Удобное авто-приложение",
   description: "Info4cars — это приложение для получения информации об автомобилях: история, характеристики, данные с госресурсов.",
-  image: "/imgs/logo.jpg",
+  image: "/imgs/logo.png",
   keywords: "автомобиль, vin, история авто, проверка авто, госномера, авто Беларусь",
 };
 
