@@ -6,12 +6,18 @@ type ChipProps = {
   children: React.ReactNode;
   href?: string;
   className?: string;
+  disabled?: boolean;
 };
 
-const Chip: React.FC<ChipProps> = ({ children, href, className }) => {
+const Chip: React.FC<ChipProps> = ({ children, href, className, disabled }) => {
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={styles.chipLink}>
+      <a
+        href={disabled ? undefined : href}
+        target={disabled ? undefined : "_blank"}
+        rel={disabled ? undefined : "noopener noreferrer"}
+        className={`${styles.chipLink} ${disabled ? styles.disabled : ""}`}
+      >
         {children}
       </a>
     );

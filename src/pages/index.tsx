@@ -36,9 +36,9 @@ export default function Home() {
           <FaAndroid size={24} color="green" />
         </Chip>
 
-        <Chip href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
-          скачать версию для IOS
-          <FaApple size={30} color="black" />
+        <Chip disabled href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
+          скачать версию для IOS (в разработке..)
+          {/* <FaApple size={30} color="black" /> */}
         </Chip>
       </div>
       <div className={styles.grid}>
