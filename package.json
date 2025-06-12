@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "dotenv -e .env.development next dev",
-    "build": "dotenv -e .env.production next build",
-    "start": "dotenv -e .env.production next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap"
   },
