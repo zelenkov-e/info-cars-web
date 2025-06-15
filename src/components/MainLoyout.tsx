@@ -53,12 +53,14 @@ const MainLayout = ({ title, description, keywords, children, image }: MainLayou
         <meta name="twitter:image" content={metaImage} />
       </Head>
       <main className={`${inter.className}`}>
-        <Link href="/">
-          <Chip>
-            <MdOutlineArrowBackIosNew size={24} color="black" />
-            на главную
-          </Chip>
-        </Link>
+        {router.pathname !== "/" && (
+          <Link href="/">
+            <Chip>
+              <MdOutlineArrowBackIosNew size={24} color="black" />
+              на главную
+            </Chip>
+          </Link>
+        )}
         {children}
         <Fab onClick={() => router.push("/contact")} icon={<IoMail />} />
       </main>

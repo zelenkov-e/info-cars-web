@@ -4,7 +4,7 @@ import MainLayout from "@/components/MainLoyout";
 import { useRouter } from "next/router";
 import { RiAuctionFill } from "react-icons/ri";
 import { TbPencilSearch } from "react-icons/tb";
-import { FaAndroid, FaApple } from "react-icons/fa";
+import { FaAndroid, FaBarcode } from "react-icons/fa";
 import Separator from "@/components/common/Separator";
 import Image from "@/components/common/Image";
 import Button from "@/components/common/Button";
@@ -26,13 +26,21 @@ const PAGES = [
     imgPath: "/imgs/to-image.jpg",
     imgAlt: "изображение ТО",
   },
+  {
+    title: "проверка истории по VIN",
+    icon: <FaBarcode />,
+    path: "/video/proverka-istorii-po-vin-video",
+    describtion: "смотреть видео",
+    imgPath: "/imgs/proverka-istorii-po-vin-image.jpg",
+    imgAlt: "изображение проверка истории по VIN",
+  },
 ];
 
 const HeaderProps = {
   title: "Видео инструкции по использованию приложения | Info4cars",
   description:
     "Смотрите пошаговые видео инструкции по использованию приложения Info4cars. Узнайте, как проверять авто по VIN, техосмотру и другим параметрам.",
-  keywords: "видео инструкция, как пользоваться Info4cars, проверка авто, VIN, техосмотр, Беларусь, приложение, видео помощь",
+  keywords: "видео инструкция, как пользоваться Info4cars, проверка авто по VIN, проверка техосмотр, Беларусь, приложение, видео помощь",
 };
 
 export default function AboutPage() {
