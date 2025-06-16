@@ -10,7 +10,8 @@ import MainLayout from "@/components/MainLoyout";
 const inter = Inter({ subsets: ["latin"] });
 
 const PAGES = [
-  { title: "car history", icon: <FaCarSide />, path: "/proverka-istorii-po-vin", describtion: "Проверка истории автомобиля по VIN" },
+  { title: "car history (VIN)", icon: <FaCarSide />, path: "/proverka-istorii-po-vin", describtion: "Проверка истории автомобиля по VIN" },
+  { title: "car history (NUM)", icon: <FaCarSide />, path: "/proverka-avto-po-nomeru", describtion: "Проверка авто по номеру" },
   { title: "video", icon: <FaVideo />, path: "/video", describtion: "Видео иструкции по пользованию приложением" },
   { title: "about", icon: <FaInfoCircle />, path: "/about", describtion: "Информация о сервисе" },
   { title: "support us", icon: <FaHandsHelping />, path: "/support", describtion: "Возможность поблагодарить" },
@@ -18,7 +19,7 @@ const PAGES = [
 ];
 
 const HeaderProps = {
-  title: "Онлайн проверка авто — по VIN и госномеру",
+  title: "Онлайн проверка авто — по VIN и номеру",
   description: "Проверка авто онлайн: узнай историю автомобиля по VIN и номеру. Быстро, надёжно, без скрытых данных.",
 };
 
