@@ -1,4 +1,3 @@
-// pages/_document.tsx
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -6,6 +5,7 @@ export default function Document() {
     <Html lang="ru">
       <Head>
         <meta charSet="UTF-8" />
+        <meta name="yandex-verification" content="0ea5eb96cbb6d0d8" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
