@@ -13,6 +13,11 @@ const HeaderProps = {
 };
 
 export default function AboutPage() {
+  const handleChipClick = () => {
+    if (typeof window !== "undefined" && (window as any).umami) {
+      (window as any).umami.track("download-android-about");
+    }
+  };
   return (
     <MainLayout {...HeaderProps}>
       <div className={styles.about}>
@@ -54,7 +59,7 @@ export default function AboutPage() {
         </div>
         <Separator size="large" />
         <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars" onClick={handleChipClick}>
             скачать версию для Андроид
             <FaAndroid size={24} color="green" />
           </Chip>

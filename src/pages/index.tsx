@@ -31,7 +31,19 @@ export default function Home() {
   const router = useRouter();
 
   const handleClick = (path: string) => {
+    const eventName = path.replace(/^\//, "");
+
+    if (typeof window !== "undefined" && (window as any).umami) {
+      (window as any).umami.track(eventName);
+    }
+
     router.push(path);
+  };
+
+  const handleChipClick = () => {
+    if (typeof window !== "undefined" && (window as any).umami) {
+      (window as any).umami.track("download-android-main-layout");
+    }
   };
 
   return (
@@ -44,7 +56,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars" onClick={handleChipClick}>
             скачать версию для Андроид
             <FaAndroid size={24} color="green" />
           </Chip>

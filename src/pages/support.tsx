@@ -14,6 +14,11 @@ const HeaderProps = {
 };
 
 export default function SupportUsPage() {
+  const handleChipClick = () => {
+    if (typeof window !== "undefined" && (window as any).umami) {
+      (window as any).umami.track("download-android-support");
+    }
+  };
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main}`}>
@@ -49,7 +54,7 @@ export default function SupportUsPage() {
         <Image alt="logo" src={qrCodeImage} />
         <Separator size="large" />
         <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars" onClick={handleChipClick}>
             скачать версию для Андроид
             <FaAndroid size={24} color="green" />
           </Chip>
