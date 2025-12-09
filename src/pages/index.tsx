@@ -1,11 +1,12 @@
 import { Inter } from "next/font/google";
 import styles from "./../styles/Home.module.scss";
-import { FaInfoCircle, FaHandsHelping, FaAndroid, FaCarSide, FaCarCrash, FaVideo, FaKey, FaCar } from "react-icons/fa";
+import { FaInfoCircle, FaHandsHelping, FaAndroid, FaCarSide, FaCarCrash, FaVideo, FaKey, FaCar, FaFlagCheckered } from "react-icons/fa";
 import { useRouter } from "next/router";
 import Chip from "@/components/common/Chip";
 import Fab from "@/components/common/Fab";
 import { IoMail } from "react-icons/io5";
 import MainLayout from "@/components/MainLoyout";
+import Button from "@/components/common/Button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,8 @@ const PAGES = [
 
 const HeaderProps = {
   title: "Проверка автомобиля онлайн — история по VIN и госномеру",
-  description:
-    "Узнайте всё об автомобиле перед покупкой: история по VIN и номеру, ДТП, пробег, владельцы, ограничения. Бесплатная проверка с расширенным отчётом.",
-  keywords:
-    "проверка автомобиля онлайн, история авто, проверить машину по vin, проверка по номеру авто, проверка машины перед покупкой, проверка авто бесплатно",
+  description: "Узнайте всё об автомобиле перед покупкой: история по VIN и номеру, ДТП, пробег, владельцы, ограничения. Бесплатная проверка с расширенным отчётом.",
+  keywords: "проверка автомобиля онлайн, история авто, проверить машину по vin, проверка по номеру авто, проверка машины перед покупкой, проверка авто бесплатно",
 };
 
 export default function Home() {
@@ -40,10 +39,11 @@ export default function Home() {
     router.push(path);
   };
 
-  const handleChipClick = () => {
+  const handleButtonClick = () => {
     if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("download-android-main-layout");
+      (window as any).umami.track("start-web-main-layout");
     }
+    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -55,17 +55,9 @@ export default function Home() {
             <h2>Info4Cars - сервис по поиску полезной информации об авто.</h2>
           </div>
         </div>
-        <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars" onClick={handleChipClick}>
-            скачать версию для Андроид
-            <FaAndroid size={24} color="green" />
-          </Chip>
 
-          <Chip disabled href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
-            скачать версию для IOS (в разработке..)
-            {/* <FaApple size={30} color="black" /> */}
-          </Chip>
-        </div>
+        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+
         <div className={styles.grid}>
           {PAGES.map((page) => (
             <div key={page.title} className={styles.card} onClick={() => handleClick(page.path)}>
@@ -75,6 +67,10 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+          скачать версию для Андроид
+          <FaAndroid size={24} color="green" />
+        </Chip>
         <Fab onClick={() => router.push("/contact")} icon={<IoMail />} />
       </main>
     </MainLayout>

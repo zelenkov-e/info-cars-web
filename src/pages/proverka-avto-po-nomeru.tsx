@@ -3,6 +3,7 @@ import styles from "./../styles/Home.module.scss";
 import Chip from "@/components/common/Chip";
 import { FaAndroid } from "react-icons/fa";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import Button from "@/components/common/Button";
 
 const HeaderProps = {
   title: "Проверка авто по номеру — узнать сведения об автомобиле",
@@ -11,34 +12,24 @@ const HeaderProps = {
 };
 
 export default function NumberHistoryPage() {
-  const handleChipClick = () => {
+  const handleButtonClick = () => {
     if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("download-android-proverka-avto-ponomeru");
+      (window as any).umami.track("start-web-proverka-avto-ponomeru");
     }
+    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
   };
 
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main}`}>
+        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+
         <h1>Проверка авто по номеру: найдите данные о машине по госномеру</h1>
         <p>
-          Не всегда есть доступ к VIN-коду, но госномер автомобиля также позволяет получить много полезной информации. С помощью нашего сервиса вы
-          можете проверить авто по номеру и узнать его историю.
+          Не всегда есть доступ к VIN-коду, но госномер автомобиля также позволяет получить много полезной информации. С помощью нашего сервиса вы можете проверить авто по номеру и узнать его историю.
         </p>
 
         <p>Скачайте приложение и узнайте полную информацию об автомобиле по номеру: ДТП, залоги, ограничения, участие в розыске и многое другое.</p>
-
-        <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars" onClick={handleChipClick}>
-            скачать версию для Андроид
-            <FaAndroid size={24} color="green" />
-          </Chip>
-
-          {/* <Chip href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
-              скачать версию для IOS
-              <FaApple size={30} color="black" />
-            </Chip> */}
-        </div>
 
         <h2>Что даст проверка по номеру автомобиля?</h2>
         <ul>
@@ -49,19 +40,18 @@ export default function NumberHistoryPage() {
           <li>Регистрации и количество владельцев</li>
         </ul>
 
-        <p>
-          Проверка авто по номеру особенно полезна, если продавец не даёт VIN-код или вы хотите быстро получить предварительную информацию о машине.
-        </p>
+        <p>Проверка авто по номеру особенно полезна, если продавец не даёт VIN-код или вы хотите быстро получить предварительную информацию о машине.</p>
 
         <h2>Где берутся данные?</h2>
-        <p>
-          Информация собирается из государственных источников: страховые службы, налоговая служба и другие. Все данные актуальны и проверяются в
-          реальном времени.
-        </p>
+        <p>Информация собирается из государственных источников: страховые службы, налоговая служба и другие. Все данные актуальны и проверяются в реальном времени.</p>
 
         <h2>Как проверить авто по номеру?</h2>
 
         <p>Не рискуйте — проверьте автомобиль перед покупкой!</p>
+        <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+          скачать версию для Андроид
+          <FaAndroid size={24} color="green" />
+        </Chip>
       </main>
     </MainLayout>
   );

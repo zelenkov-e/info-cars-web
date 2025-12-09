@@ -2,6 +2,7 @@ import MainLayout from "@/components/MainLoyout";
 import styles from "./../styles/Home.module.scss";
 import Chip from "@/components/common/Chip";
 import { FaAndroid } from "react-icons/fa";
+import Button from "@/components/common/Button";
 
 const HeaderProps = {
   title: "Проверка истории автомобиля по VIN — ДТП, пробег, владельцы",
@@ -10,33 +11,24 @@ const HeaderProps = {
 };
 
 export default function VINHistoryPage() {
-  const handleChipClick = () => {
+  const handleButtonClick = () => {
     if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("download-android-proverka-istorii-po-vin");
+      (window as any).umami.track("start-web-proverka-istorii-po-vin");
     }
+    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
   };
 
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
+        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+
         <h1>Проверка истории автомобиля по VIN: узнайте правду о машине</h1>
         <p>
-          VIN-код (Vehicle Identification Number) — это уникальный идентификатор автомобиля, который позволяет получить полную информацию о его
-          прошлом. Перед покупкой поддержанного авто важно убедиться, что транспортное средство не числится в угоне, не участвовало в серьёзных ДТП и
-          не находится в залоге.
+          VIN-код (Vehicle Identification Number) — это уникальный идентификатор автомобиля, который позволяет получить полную информацию о его прошлом. Перед покупкой поддержанного авто важно
+          убедиться, что транспортное средство не числится в угоне, не участвовало в серьёзных ДТП и не находится в залоге.
         </p>
         <p>скачай приложение и узнайте полную информацию об автомобиле по VIN: ДТП, ограничения, пробег, участие в розыске и многое другое.</p>
-        <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars" onClick={handleChipClick}>
-            скачать версию для Андроид
-            <FaAndroid size={24} color="green" />
-          </Chip>
-
-          {/* <Chip href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
-            скачать версию для IOS
-            <FaApple size={30} color="black" />
-          </Chip> */}
-        </div>
         <h2>Что можно узнать по VIN-коду?</h2>
         <ul>
           <li>Историю ДТП и повреждений</li>
@@ -51,15 +43,19 @@ export default function VINHistoryPage() {
 
         <h2>Как провести проверку?</h2>
         <p>
-          Просто введите VIN-код в форму на сайте или скачайте мобильное приложение. Система проанализирует данные из официальных баз (ГИБДД, РСА, ФНС
-          и других) и предоставит отчёт в течение нескольких секунд.
+          Просто введите VIN-код в форму на сайте или скачайте мобильное приложение. Система проанализирует данные из официальных баз (ГИБДД, РСА, ФНС и других) и предоставит отчёт в течение
+          нескольких секунд.
         </p>
 
         <h2>Почему важно проверить авто по VIN перед покупкой</h2>
         <p>
-          Статистика показывает, что более 40% автомобилей на рынке имеют скрытые дефекты, залоги или скрученный пробег. Проверка истории по VIN — это
-          надёжный способ защитить себя от потерь и обмана.
+          Статистика показывает, что более 40% автомобилей на рынке имеют скрытые дефекты, залоги или скрученный пробег. Проверка истории по VIN — это надёжный способ защитить себя от потерь и обмана.
         </p>
+
+        <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+          скачать версию для Андроид
+          <FaAndroid size={24} color="green" />
+        </Chip>
       </main>
     </MainLayout>
   );

@@ -3,38 +3,39 @@ import styles from "./../styles/Home.module.scss";
 import Separator from "@/components/common/Separator";
 import Chip from "@/components/common/Chip";
 import { FaAndroid } from "react-icons/fa";
+import Button from "@/components/common/Button";
 
 const HeaderProps = {
   title: "О приложении Info4cars — Полная информация об автомобилях по VIN и госномеру",
   description:
     "Узнайте, как Info4cars помогает автовладельцам получать важную информацию об автомобилях: история эксплуатации, характеристики, техобслуживание, проверки по VIN и госномеру. Бесплатно для зарегистрированных пользователей.",
-  keywords:
-    "Info4cars, проверка авто, VIN, госномер, история автомобиля, техобслуживание, ДТП, доверенность, угон, исполнительные документы, регистрация авто",
+  keywords: "Info4cars, проверка авто, VIN, госномер, история автомобиля, техобслуживание, ДТП, доверенность, угон, исполнительные документы, регистрация авто",
 };
 
 export default function AboutPage() {
-  const handleChipClick = () => {
+  const handleButtonClick = () => {
     if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("download-android-about");
+      (window as any).umami.track("start-web-about");
     }
+    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
   };
+
   return (
     <MainLayout {...HeaderProps}>
       <div className={styles.about}>
         <div>
           <p>
-            Info4cars — это удобное и функциональное приложение, которое помогает владельцам автомобилей получать важные сведения о своем транспортном
-            средстве. С его помощью можно быстро найти данные о характеристиках, истории эксплуатации, техническом обслуживании и других аспектах,
-            связанных с автомобилем..
+            Info4cars — это удобное и функциональное приложение, которое помогает владельцам автомобилей получать важные сведения о своем транспортном средстве. С его помощью можно быстро найти данные
+            о характеристиках, истории эксплуатации, техническом обслуживании и других аспектах, связанных с автомобилем..
           </p>
         </div>
       </div>
       <main className={`${styles.main} `}>
+        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
         <div>
           <div>
             <div>
-              <strong>Для зарегестрированных пользователей:</strong> информациия по авто по стране регитрации, история репортов(заказов) и др инф.
-              Зарегестрироваться возможно в приложении
+              <strong>Для зарегестрированных пользователей:</strong> информациия по авто по стране регитрации, история репортов(заказов) и др инф. Зарегестрироваться возможно в приложении
               <h3>Функции приложения</h3>
               <ul>
                 <li>
@@ -46,8 +47,7 @@ export default function AboutPage() {
                 </li>
 
                 <li>
-                  <strong>Предоставление информации по исполнительным документам:</strong> Задолженностей по исполнительным документам,наличие
-                  действующая доверенности
+                  <strong>Предоставление информации по исполнительным документам:</strong> Задолженностей по исполнительным документам,наличие действующая доверенности
                 </li>
 
                 <li>
@@ -59,15 +59,10 @@ export default function AboutPage() {
         </div>
         <Separator size="large" />
         <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars" onClick={handleChipClick}>
+          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
             скачать версию для Андроид
             <FaAndroid size={24} color="green" />
           </Chip>
-
-          {/* <Chip href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
-            скачать версию для IOS
-            <FaApple size={30} color="black" />
-          </Chip> */}
         </div>
       </main>
     </MainLayout>

@@ -38,12 +38,11 @@ const PAGES = [
 
 const HeaderProps = {
   title: "Видео инструкции по использованию приложения | Info4cars",
-  description:
-    "Смотрите пошаговые видео инструкции по использованию приложения Info4cars. Узнайте, как проверять авто по VIN, техосмотру и другим параметрам.",
+  description: "Смотрите пошаговые видео инструкции по использованию приложения Info4cars. Узнайте, как проверять авто по VIN, техосмотру и другим параметрам.",
   keywords: "видео инструкция, как пользоваться Info4cars, проверка авто по VIN, проверка техосмотр, Беларусь, приложение, видео помощь",
 };
 
-export default function AboutPage() {
+export default function VideoPage() {
   const router = useRouter();
 
   const handleClick = (path: string) => {
@@ -55,15 +54,18 @@ export default function AboutPage() {
     router.push(path);
   };
 
-  const handleChipClick = () => {
+  const handleButtonClick = () => {
     if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("download-android-about");
+      (window as any).umami.track("start-web-video");
     }
+    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
   };
 
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
+        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+
         <h3>Видео инструкции по пользованию приложением</h3>
 
         <div className={styles.grid}>
@@ -79,15 +81,10 @@ export default function AboutPage() {
         </div>
         <Separator size="large" />
         <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars" onClick={handleChipClick}>
+          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
             скачать версию для Андроид
             <FaAndroid size={24} color="green" />
           </Chip>
-
-          {/* <Chip href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
-            скачать версию для IOS
-            <FaApple size={30} color="black" />
-          </Chip> */}
         </div>
       </main>
     </MainLayout>
