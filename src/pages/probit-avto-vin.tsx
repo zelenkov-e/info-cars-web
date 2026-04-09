@@ -3,6 +3,7 @@ import styles from "./../styles/Home.module.scss";
 import Chip from "@/components/common/Chip";
 import { FaAndroid } from "react-icons/fa";
 import Button from "@/components/common/Button";
+import { ANDROID_EVENT, ANDROID_PATH, START_WEB_PATH } from "@/common/constant";
 
 const HeaderProps = {
   title: "Пробить авто по VIN — проверка на ДТП, залоги и пробег",
@@ -10,18 +11,28 @@ const HeaderProps = {
   keywords: "пробить авто по vin, vin проверка, проверить машину по vin номеру, скрученный пробег, авто в залоге, проверка автомобиля по vin",
 };
 
+const START_WEB_EVENT = "start-web-pobit-avto-vin";
+
 export default function VINHistoryCheckPage() {
-  const handleButtonClick = () => {
+  const trackEvent = (eventName: string) => {
     if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("start-web-pobit-avto-vin");
+      (window as any).umami.track(eventName);
     }
-    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
+  };
+
+  const handleExternalClick = (e: React.MouseEvent, path: string, eventName: string) => {
+    e.preventDefault();
+    trackEvent(eventName);
+
+    setTimeout(() => {
+      window.open(path, "_blank", "noopener,noreferrer");
+    }, 150);
   };
 
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
-        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
 
         <h1>Пробить авто по VIN: проверьте залоги, ДТП и владельцев</h1>
         <p>Пробивка авто по VIN-коду позволяет получить достоверную информацию о транспортном средстве: от года выпуска до участия в ДТП. Это обязательный шаг перед покупкой машины с пробегом.</p>
@@ -46,7 +57,7 @@ export default function VINHistoryCheckPage() {
 
         <h2>Как это работает?</h2>
         <p>Вы вводите VIN-код автомобиля, и система автоматически анализирует базы данных и формирует отчёт. Всё просто, быстро и удобно.</p>
-        <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+        <Chip href={ANDROID_PATH} onClick={(e) => handleExternalClick(e, ANDROID_PATH, ANDROID_EVENT)}>
           скачать версию для Андроид
           <FaAndroid size={24} color="green" />
         </Chip>

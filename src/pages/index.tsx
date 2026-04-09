@@ -7,6 +7,7 @@ import Fab from "@/components/common/Fab";
 import { IoMail } from "react-icons/io5";
 import MainLayout from "@/components/MainLoyout";
 import Button from "@/components/common/Button";
+import { ANDROID_EVENT, ANDROID_PATH, START_WEB_PATH } from "@/common/constant";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,24 +27,30 @@ const HeaderProps = {
   keywords: "проверка автомобиля онлайн, история авто, проверить машину по vin, проверка по номеру авто, проверка машины перед покупкой, проверка авто бесплатно",
 };
 
+const START_WEB_EVENT = "start-web-main-layout";
+
 export default function Home() {
   const router = useRouter();
 
-  const handleClick = (path: string) => {
-    const eventName = path.replace(/^\//, "");
-
+  const trackEvent = (eventName: string) => {
     if (typeof window !== "undefined" && (window as any).umami) {
       (window as any).umami.track(eventName);
     }
+  };
 
+  const handleInternalClick = (path: string) => {
+    const eventName = path.replace(/^\//, "") || "home";
+    trackEvent(eventName);
     router.push(path);
   };
 
-  const handleButtonClick = () => {
-    if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("start-web-main-layout");
-    }
-    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
+  const handleExternalClick = (e: React.MouseEvent, path: string, eventName: string) => {
+    e.preventDefault();
+    trackEvent(eventName);
+
+    setTimeout(() => {
+      window.open(path, "_blank", "noopener,noreferrer");
+    }, 150);
   };
 
   return (
@@ -56,22 +63,24 @@ export default function Home() {
           </div>
         </div>
 
-        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
 
         <div className={styles.grid}>
           {PAGES.map((page) => (
-            <div key={page.title} className={styles.card} onClick={() => handleClick(page.path)}>
+            <div key={page.title} className={styles.card} onClick={() => handleInternalClick(page.path)}>
               <div className={styles.cardIcon}>{page.icon}</div>
               <h2>{page.title}</h2>
               <p>{page.describtion}</p>
             </div>
           ))}
         </div>
-        <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+
+        <Chip href={ANDROID_PATH} onClick={(e) => handleExternalClick(e, ANDROID_PATH, ANDROID_EVENT)}>
           скачать версию для Андроид
           <FaAndroid size={24} color="green" />
         </Chip>
-        <Fab onClick={() => router.push("/contact")} icon={<IoMail />} />
+
+        <Fab onClick={() => handleInternalClick("/contact")} icon={<IoMail />} />
       </main>
     </MainLayout>
   );

@@ -8,6 +8,7 @@ import { FaAndroid, FaBarcode } from "react-icons/fa";
 import Separator from "@/components/common/Separator";
 import Image from "@/components/common/Image";
 import Button from "@/components/common/Button";
+import { ANDROID_EVENT, ANDROID_PATH, START_WEB_PATH } from "@/common/constant";
 
 const PAGES = [
   {
@@ -42,29 +43,36 @@ const HeaderProps = {
   keywords: "видео инструкция, как пользоваться Info4cars, проверка авто по VIN, проверка техосмотр, Беларусь, приложение, видео помощь",
 };
 
+const START_WEB_EVENT = "start-web-video";
+
 export default function VideoPage() {
   const router = useRouter();
 
-  const handleClick = (path: string) => {
-    const eventName = path.replace(/^\//, "");
-
+  const trackEvent = (eventName: string) => {
     if (typeof window !== "undefined" && (window as any).umami) {
       (window as any).umami.track(eventName);
     }
-    router.push(path);
   };
 
-  const handleButtonClick = () => {
-    if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("start-web-video");
-    }
-    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
+  const handleExternalClick = (e: React.MouseEvent, path: string, eventName: string) => {
+    e.preventDefault();
+    trackEvent(eventName);
+
+    setTimeout(() => {
+      window.open(path, "_blank", "noopener,noreferrer");
+    }, 150);
+  };
+
+  const handleInternalClick = (path: string) => {
+    const eventName = path.replace(/^\//, "") || "home";
+    trackEvent(eventName);
+    router.push(path);
   };
 
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
-        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
 
         <h3>Видео инструкции по пользованию приложением</h3>
 
@@ -75,13 +83,13 @@ export default function VideoPage() {
               <h2>{page.title}</h2>
               <Image src={page.imgPath} alt={page.imgAlt} width={400} height={300} rounded />
               <Separator />
-              <Button onClick={() => handleClick(page.path)}>{page.describtion}</Button>
+              <Button onClick={() => handleInternalClick(page.path)}>{page.describtion}</Button>
             </div>
           ))}
         </div>
         <Separator size="large" />
         <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+          <Chip href={ANDROID_PATH} onClick={(e) => handleExternalClick(e, ANDROID_PATH, ANDROID_EVENT)}>
             скачать версию для Андроид
             <FaAndroid size={24} color="green" />
           </Chip>

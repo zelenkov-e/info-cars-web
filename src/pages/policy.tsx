@@ -6,6 +6,7 @@ import Text from "@/components/common/Text";
 import Separator from "@/components/common/Separator";
 import { FaAndroid } from "react-icons/fa";
 import Button from "@/components/common/Button";
+import { ANDROID_EVENT, ANDROID_PATH, START_WEB_PATH } from "@/common/constant";
 
 const HeaderProps = {
   title: "Политика конфиденциальности и пользовательское соглашение | Info4cars",
@@ -14,18 +15,28 @@ const HeaderProps = {
   keywords: "политика конфиденциальности, защита данных, пользовательское соглашение, Info4cars, персональные данные, безопасность, Беларусь",
 };
 
+const START_WEB_EVENT = "start-web-policy";
+
 export default function PolicyPage() {
-  const handleButtonClick = () => {
+  const trackEvent = (eventName: string) => {
     if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("start-web-policy");
+      (window as any).umami.track(eventName);
     }
-    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
+  };
+
+  const handleExternalClick = (e: React.MouseEvent, path: string, eventName: string) => {
+    e.preventDefault();
+    trackEvent(eventName);
+
+    setTimeout(() => {
+      window.open(path, "_blank", "noopener,noreferrer");
+    }, 150);
   };
 
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
-        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
         <h3>Политика конфиденциальности</h3>
         <div>
           <Text size="small">
@@ -69,7 +80,7 @@ export default function PolicyPage() {
 
         <Separator size="large" />
         <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+          <Chip href={ANDROID_PATH} onClick={(e) => handleExternalClick(e, ANDROID_PATH, ANDROID_EVENT)}>
             скачать версию для Андроид
             <FaAndroid size={24} color="green" />
           </Chip>

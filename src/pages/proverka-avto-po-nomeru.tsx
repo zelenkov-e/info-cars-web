@@ -2,8 +2,8 @@ import MainLayout from "@/components/MainLoyout";
 import styles from "./../styles/Home.module.scss";
 import Chip from "@/components/common/Chip";
 import { FaAndroid } from "react-icons/fa";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import Button from "@/components/common/Button";
+import { ANDROID_EVENT, ANDROID_PATH, START_WEB_PATH } from "@/common/constant";
 
 const HeaderProps = {
   title: "Проверка авто по номеру — узнать сведения об автомобиле",
@@ -11,18 +11,28 @@ const HeaderProps = {
   keywords: "проверка авто по номеру, история автомобиля по номеру, данные по госномеру, розыск по номеру авто, проверить машину по номеру",
 };
 
+const START_WEB_EVENT = "start-web-proverka-avto-ponomeru";
+
 export default function NumberHistoryPage() {
-  const handleButtonClick = () => {
+  const trackEvent = (eventName: string) => {
     if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("start-web-proverka-avto-ponomeru");
+      (window as any).umami.track(eventName);
     }
-    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
+  };
+
+  const handleExternalClick = (e: React.MouseEvent, path: string, eventName: string) => {
+    e.preventDefault();
+    trackEvent(eventName);
+
+    setTimeout(() => {
+      window.open(path, "_blank", "noopener,noreferrer");
+    }, 150);
   };
 
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main}`}>
-        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
 
         <h1>Проверка авто по номеру: найдите данные о машине по госномеру</h1>
         <p>
@@ -48,7 +58,7 @@ export default function NumberHistoryPage() {
         <h2>Как проверить авто по номеру?</h2>
 
         <p>Не рискуйте — проверьте автомобиль перед покупкой!</p>
-        <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+        <Chip href={ANDROID_PATH} onClick={(e) => handleExternalClick(e, ANDROID_PATH, ANDROID_EVENT)}>
           скачать версию для Андроид
           <FaAndroid size={24} color="green" />
         </Chip>

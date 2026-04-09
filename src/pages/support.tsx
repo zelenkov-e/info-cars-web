@@ -6,6 +6,7 @@ import Separator from "@/components/common/Separator";
 import Chip from "@/components/common/Chip";
 import { FaAndroid } from "react-icons/fa";
 import Button from "@/components/common/Button";
+import { ANDROID_EVENT, ANDROID_PATH, START_WEB_PATH } from "@/common/constant";
 
 const HeaderProps = {
   title: "Поддержать Info4cars — Помогите развитию проекта",
@@ -13,18 +14,28 @@ const HeaderProps = {
   keywords: "пожертвование Info4cars, поддержать проект, E-POS, помощь проекту, финансирование, Info4cars донат, поддержка сайта",
 };
 
+const START_WEB_EVENT = "start-web-support";
+
 export default function SupportUsPage() {
-  const handleButtonClick = () => {
+  const trackEvent = (eventName: string) => {
     if (typeof window !== "undefined" && (window as any).umami) {
-      (window as any).umami.track("start-web-support");
+      (window as any).umami.track(eventName);
     }
-    window.open("https://app.info4cars.com", "_blank", "noopener,noreferrer");
+  };
+
+  const handleExternalClick = (e: React.MouseEvent, path: string, eventName: string) => {
+    e.preventDefault();
+    trackEvent(eventName);
+
+    setTimeout(() => {
+      window.open(path, "_blank", "noopener,noreferrer");
+    }, 150);
   };
 
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main}`}>
-        <Button onClick={handleButtonClick}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
 
         <h3>
           <b>Поддержка проекта</b>
@@ -52,7 +63,7 @@ export default function SupportUsPage() {
         <Image alt="logo" src={qrCodeImage} />
         <Separator size="large" />
         <div className={styles.description}>
-          <Chip href="https://play.google.com/store/apps/details?id=com.company.infocars">
+          <Chip href={ANDROID_PATH} onClick={(e) => handleExternalClick(e, ANDROID_PATH, ANDROID_EVENT)}>
             скачать версию для Андроид
             <FaAndroid size={24} color="green" />
           </Chip>

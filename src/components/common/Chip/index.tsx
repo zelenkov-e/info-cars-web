@@ -1,31 +1,29 @@
 import React from "react";
 import styles from "./Chip.module.scss";
-// import clsx from "clsx";
 
 type ChipProps = {
   children: React.ReactNode;
   href?: string;
   className?: string;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>) => void;
 };
 
 const Chip: React.FC<ChipProps> = ({ children, href, className, onClick, disabled }) => {
+  const commonProps = {
+    className: `${styles.chipLink} ${disabled ? styles.disabled : ""} ${className || ""}`,
+    onClick: disabled ? undefined : onClick,
+  };
+
   if (href) {
     return (
-      <a
-        href={disabled ? undefined : href}
-        target={disabled ? undefined : "_blank"}
-        rel={disabled ? undefined : "noopener noreferrer"}
-        className={`${styles.chipLink} ${disabled ? styles.disabled : ""}`}
-        onClick={onClick}
-      >
+      <a {...commonProps} href={disabled ? "#" : href} target="_blank" rel="noopener noreferrer">
         {children}
       </a>
     );
   }
 
-  return <div className={styles.chipLink}>{children}</div>;
+  return <div {...commonProps}>{children}</div>;
 };
 
 export default Chip;
