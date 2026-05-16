@@ -32,7 +32,7 @@ export default function VINHistoryCheckPage() {
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
-        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Проверить авто бесплатно</Button>
 
         <h1>Пробить авто по VIN: проверьте залоги, ДТП и владельцев</h1>
         <p>Пробивка авто по VIN-коду позволяет получить достоверную информацию о транспортном средстве: от года выпуска до участия в ДТП. Это обязательный шаг перед покупкой машины с пробегом.</p>

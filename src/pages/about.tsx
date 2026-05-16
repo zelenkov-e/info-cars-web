@@ -42,7 +42,7 @@ export default function AboutPage() {
         </div>
       </div>
       <main className={`${styles.main} `}>
-        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Проверить авто бесплатно</Button>
         <div>
           <div>
             <div>

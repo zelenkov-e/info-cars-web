@@ -63,7 +63,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Проверить авто бесплатно</Button>
 
         <div className={styles.grid}>
           {PAGES.map((page) => (

@@ -72,7 +72,7 @@ export default function VideoPage() {
   return (
     <MainLayout {...HeaderProps}>
       <main className={`${styles.main} `}>
-        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Начать проверку авто</Button>
+        <Button onClick={(e) => handleExternalClick(e, START_WEB_PATH, START_WEB_EVENT)}>Проверить авто бесплатно</Button>
 
         <h3>Видео инструкции по пользованию приложением</h3>
 
