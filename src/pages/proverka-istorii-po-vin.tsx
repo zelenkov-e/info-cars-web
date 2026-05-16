@@ -11,7 +11,7 @@ const HeaderProps = {
   keywords: "проверка истории автомобиля по VIN, история авто по вин номеру, ДТП по VIN, владельцы по VIN, авто в розыске, vin отчет",
 };
 
-const START_WEB_EVENT = "start-web-proverka-istorii-po-vin";
+const START_WEB_EVENT = "start-free-web-proverka-istorii-po-vin";
 
 export default function VINHistoryPage() {
   const trackEvent = (eventName: string) => {

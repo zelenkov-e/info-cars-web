@@ -27,7 +27,7 @@ const HeaderProps = {
   keywords: "проверка автомобиля онлайн, история авто, проверить машину по vin, проверка по номеру авто, проверка машины перед покупкой, проверка авто бесплатно",
 };
 
-const START_WEB_EVENT = "start-web-main-layout";
+const START_WEB_EVENT = "start-free-web-main-layout";
 
 export default function Home() {
   const router = useRouter();

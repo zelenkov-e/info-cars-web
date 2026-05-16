@@ -13,7 +13,7 @@ const HeaderProps = {
   keywords: "Info4cars, проверка авто, VIN, госномер, история автомобиля, техобслуживание, ДТП, доверенность, угон, исполнительные документы, регистрация авто",
 };
 
-const START_WEB_EVENT = "start-web-aboutt";
+const START_WEB_EVENT = "start-free-web-aboutt";
 
 export default function AboutPage() {
   const trackEvent = (eventName: string) => {

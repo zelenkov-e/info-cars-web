@@ -11,7 +11,7 @@ const HeaderProps = {
   keywords: "проверка авто по номеру, история автомобиля по номеру, данные по госномеру, розыск по номеру авто, проверить машину по номеру",
 };
 
-const START_WEB_EVENT = "start-web-proverka-avto-ponomeru";
+const START_WEB_EVENT = "start-free-web-proverka-avto-ponomeru";
 
 export default function NumberHistoryPage() {
   const trackEvent = (eventName: string) => {

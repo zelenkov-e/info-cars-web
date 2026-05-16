@@ -14,7 +14,7 @@ const HeaderProps = {
   keywords: "пожертвование Info4cars, поддержать проект, E-POS, помощь проекту, финансирование, Info4cars донат, поддержка сайта",
 };
 
-const START_WEB_EVENT = "start-web-support";
+const START_WEB_EVENT = "start-free-web-support";
 
 export default function SupportUsPage() {
   const trackEvent = (eventName: string) => {

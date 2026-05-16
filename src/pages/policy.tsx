@@ -15,7 +15,7 @@ const HeaderProps = {
   keywords: "политика конфиденциальности, защита данных, пользовательское соглашение, Info4cars, персональные данные, безопасность, Беларусь",
 };
 
-const START_WEB_EVENT = "start-web-policy";
+const START_WEB_EVENT = "start-free-web-policy";
 
 export default function PolicyPage() {
   const trackEvent = (eventName: string) => {

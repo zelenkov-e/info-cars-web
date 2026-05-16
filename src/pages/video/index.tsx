@@ -43,7 +43,7 @@ const HeaderProps = {
   keywords: "видео инструкция, как пользоваться Info4cars, проверка авто по VIN, проверка техосмотр, Беларусь, приложение, видео помощь",
 };
 
-const START_WEB_EVENT = "start-web-video";
+const START_WEB_EVENT = "start-free-web-video";
 
 export default function VideoPage() {
   const router = useRouter();

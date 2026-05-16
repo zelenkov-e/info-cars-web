@@ -11,7 +11,7 @@ const HeaderProps = {
   keywords: "пробить авто по vin, vin проверка, проверить машину по vin номеру, скрученный пробег, авто в залоге, проверка автомобиля по vin",
 };
 
-const START_WEB_EVENT = "start-web-pobit-avto-vin";
+const START_WEB_EVENT = "start-free-web-pobit-avto-vin";
 
 export default function VINHistoryCheckPage() {
   const trackEvent = (eventName: string) => {
